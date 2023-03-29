@@ -1,4 +1,3 @@
-# mutate() 변수 추가
 # 단축키 [Ctrl+Shit+M]으로 %>% 기호 입력
 library(dplyr)
 library(ggplot2)
@@ -144,7 +143,83 @@ head(mpg_audi %>% arrange(desc(hwy)),5)
 # 답
 mpg %>% filter(manufacturer=='audi') %>% arrange(desc(hwy)) %>% head(5)
 
+# 6-5
+# mutate() : 파생변수 추가하기
+exam %>% mutate(total = math + english + science) %>% head
 
+exam %>% mutate(total = math + english + science,
+                mean = (math + english + science)/3) %>% head
 
+exam %>% mutate(total = math + english + science) %>% 
+  arrange(desc(total))
 
+# science <= 60 pass fail 조건문
+exam %>% mutate(test = ifelse(science>=60, 'pass','fail'))
+exam
+
+# 144p
+# hwy, cty 변수 이용해서 파생변수 만들기
+
+mpg_df <- mpg
+
+mpg_df <- mpg_df %>%  mutate('합산연비변수' = cty+hwy)
+head(mpg_df)
+
+mpg_df <- mpg_df %>% mutate('평균연비변수'= (cty+hwy)/2)
+head(mpg_df)
+
+mpg_df %>% arrange(desc(평균연비변수)) %>% head
+
+mpg %>% mutate(total = cty +hwy,
+               mean = total/2) %>% 
+  arrange(desc(mean)) %>% head(3)
+
+# 6-6
+# 집단별로 요약하기
+# groupby() , summarise
+
+exam %>% summarise(mean_math =mean(math))
+
+exam %>% group_by(class) %>% 
+  summarise(mean_math=mean(math))
+
+exam %>% group_by(class) %>% 
+  summarise(mean_math=mean(math),
+            sum_math=sum(math))
+
+exam %>% group_by(class) %>% 
+  summarise(mean_math=mean(math),
+            sum_math=sum(math),
+            median_mah=median(math),
+            n=n()) # n 개수 (몇명의 값인지)
+
+mpg %>% group_by(manufacturer) %>%
+  mutate(tot=(cty+hwy)/2) %>% 
+  summarise(mean_tot=mean(tot)) %>% 
+  arrange(desc(mean_tot)) %>% head
+
+mpg %>% group_by(manufacturer) %>%
+  filter(class=='suv') %>% 
+  mutate(tot=(cty+hwy)/2) %>% 
+  summarise(mean_tot=mean(tot)) %>% 
+  arrange(desc(mean_tot)) %>% head
+
+# 150p
+# mpg 데이터 이용해서 분석 문제 해결
+# class별 cty 평균 구하기
+# cty 평균이 높은순으로
+mpg %>% group_by(class) %>% 
+  summarise(mean_cty=mean(cty)) %>% 
+  arrange(desc(mean_cty))
+
+# class별 hwy 평균이 가장 높은 회사 세곳 출력
+mpg %>% group_by(class) %>% 
+  summarise(mean_hwy=mean(hwy)) %>% 
+  arrange(desc(mean_hwy)) %>% head(3)
+
+# 각 회사별 compact 차종 수 내림차순 정렬 출력
+mpg %>% group_by(manufacturer) %>% 
+  filter(class=='compact') %>%
+  summarise(n_compact=n()) %>% 
+  arrange(desc(n_compact))
 
