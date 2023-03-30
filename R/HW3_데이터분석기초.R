@@ -212,8 +212,8 @@ mpg %>% group_by(class) %>%
   summarise(mean_cty=mean(cty)) %>% 
   arrange(desc(mean_cty))
 
-# class별 hwy 평균이 가장 높은 회사 세곳 출력
-mpg %>% group_by(class) %>% 
+# 회사별 hwy 평균이 가장 높은 회사 세곳 출력
+mpg %>% group_by(manufacturer) %>% 
   summarise(mean_hwy=mean(hwy)) %>% 
   arrange(desc(mean_hwy)) %>% head(3)
 
@@ -223,3 +223,78 @@ mpg %>% group_by(manufacturer) %>%
   summarise(n_compact=n()) %>% 
   arrange(desc(n_compact))
 
+# 6-7 데이터 합치기
+
+# 가로합치기
+test1 <- data.frame(id=c(1,2,3,4,5), midterm=c(60,80,70,90,85))
+test2 <- data.frame(id=c(1,2,3,4,5), final= c(70,83,65,95,80))
+test1 ; test2
+total <- left_join(test1,test2,by="id")  # by는 겹따옴표 사용하기
+total
+
+# 담임선생님 명단 만들기
+name <- data.frame(class=c(1,2,3,4,5), 
+                   teacher=c('kim','lee','park','choi','jung'))
+name
+
+exam <- read.csv("data/csv_exam.csv")
+
+View(exam)
+head(exam)
+
+exam_new <- left_join(exam, name, by="class")
+head(exam_new)
+
+# 세로합치기
+group_a <- data.frame(id=c(1,2,3,4,5), test=c(60,70,80,90,85))
+group_b <- data.frame(id=c(1,2,3,4,5), test=c(63,73,83,93,89))
+group_c <- data.frame(id=c(1,2,3,4,5), test1=c(63,73,83,93,89))
+group_a ; group_b ; group_c
+
+group_all <- bind_rows(group_a,group_b)
+group_all
+
+group_call <- bind_rows(group_a,group_c)
+group_call
+
+# 156p 문제 - mpg 데이터
+
+mpg <- as.data.frame(ggplot2::mpg)
+fuel <- data.frame(fl = c("c", "d", "e", "p", "r"),
+                   price_fl = c(2.35, 2.38, 2.11, 2.76, 2.22),
+                   stringsAsFactors = F)
+fuel
+
+# mpg 데이터에 price_fl 연료가격 변수 추가
+# model, fl, price_fl 변수만 5개 행 추출
+
+mpg_add <- left_join(mpg,fuel,by="fl")
+mpg_add %>% select(c(model,fl,price_fl)) %>% head(5)
+
+# 6장 ppt 마지막 문제 - 분석 도전 
+# https://ggplot2.tidyverse.org/reference/midwest.html
+# 미국 동북중구 437개 지역의 인구통계 정보를 담고있는 데이터
+midwest <- as.data.frame(ggplot2::midwest)
+View(midwest)
+
+dim(midwest)
+str(midwest)
+
+# 문제 1. popadults 는 해당 지역의 성인 인구, poptotal 은 전체 인구를 나타냅니다. midwest 데이터에'전체 인구 대비 미성년 인구 백분율' 변수를 추가하세요.
+
+midwest_df <- midwest %>% mutate(ratio_child = (poptotal-popadults)/poptotal*100)
+head(midwest_df)
+
+# 문제 2. 미성년 인구 백분율이 가장 높은 상위 5 개 county(지역)의 미성년 인구 백분율을 출력하세요.
+
+midwest_df %>% select(county,ratio_child) %>% arrange(desc(ratio_child)) %>% head(5)
+
+# 문제 3. 분류표의 기준에 따라 미성년 비율 등급 변수를 추가하고, 각 등급에 몇 개의 지역이 있는지 알아보세요.
+
+midwest %>% 
+  mutate(ratio_child = (poptotal-popadults)/poptotal*100, 
+         grade = ifelse(ratio_child>=40,'large',ifelse(ratio_child>=30,'middle','small'))) %>% group_by(grade) %>% summarise(n=n())
+
+# 문제4. popasian은 해당 지역의 아시아인 인구를 나타냅니다. '전체 인구 대비 아시아인 인구 백분율' 변수를 추가하고, 하위 10개 지역의 state(주), county(지역명), 아시아인 인구 백분율을 출력하세요.
+
+midwest %>% mutate(ratio_asian = popasian/poptotal*100) %>% arrange(ratio_asian) %>% select(state, county, ratio_asian) %>% head(10)
