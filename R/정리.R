@@ -223,3 +223,35 @@ list_job <- read_excel('data/Koweps_Codebook.xlsx',
 # 값의 빈도 확인
 # 결측값 빈도 확인
 # 간단한 그래프 확인
+
+# 종교여부에 따른 이혼율 분석
+# religion_marriage 변수에 marriage 결측값 없고 religion과 group_marriage로 빈도수 집계해서 합을 파생변수 tot_group에 넣기, pct 파생변수 추가해서 이혼율 반올림해서 넣기
+# 이혼 추출
+# divorce 변수에 group_marriagerk divorce인 행만 추출하기 , 열은 religion, pct만 출력
+# 종교와 이혼율 관계 그래프 그리기
+
+# 연령대에 따른 이혼율 분석
+# ageg_marriage 변수에 marriage 결측값 없고 ageg과 group_marriage로 빈도수 집계해서 합을 파생변수 tot_group에 넣기, pct 파생변수 추가해서 이혼율 반올림해서 넣기 (count 함수 이용)
+# 초년 제외, 이혼 추출
+# ageg_divorce 변수에 연령대 young, 이혼한 값 넣기, 열은 연령대와 이혼율만 추출
+# 연령대와 이혼율 관계 그래프 그리기
+
+# 연령대, 종교유무, 결혼상태별 비율표 만들기
+# ageg_religion_marriage 변수에 group_marriage 결측값 없고, 연령대 young인 행만 연령대, 종교, 결혼상태 빈도수 집계해서 합을 파생변수 tot_group에 넣기, pct 파생변수 추가해서 이혼율 반올림해서 넣기
+
+# 연령대 및 종교 유무별 이혼율 표 만들기
+# ageg_religion_marriage 변수에서 divorce 인 행만 추출, 열은 연령대와 종교, 이혼율만 추출
+# 종교별 연령대 이혼율 그래프 그리기, 누적X
+
+# 9-9 지역별 연령대 비율
+# code_region 변수 값이 빈도 확인
+# 지역코드 목록 만들기
+# 지역 = c('서울','수도권(인천/경기)','부산/경남/울산','대구/경북','대전,충남','강원/충북','광주/전남/전북/제주도')
+list_region <- data.frame(code_region=c(1:7), region = 지역)
+# welfare 변수에 지역명 변수를 추가
+# region_ageg 변수에 종교와 연령대의 빈도수 집계해서 합을 파생변수 tot_group에 넣기, pct 파생변수 추가해서 이혼율 반올림해서 넣기
+# 연령대별 종교 이혼율 그래프 그리기, 가로 막대 그래프
+
+# 노년층 비율을 오름차순 (list_order_old 변수)
+# 지역명 순서 변수 만들기 (order변수)
+# 연령대별 종교 이혼율 그래프 그리기, 가로 막대 그래프, x축 오름차순 되게
