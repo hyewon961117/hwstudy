@@ -38,7 +38,7 @@ col <- colorRampPalette(c("#BB4444","#EE9988","#FFFFFF","#77AADD","#4477AA"))
 
 corrplot(car_cor, method="color",    # 색깔로 표현
          col = col(200),             # 색상 200개 선정
-         type = "lower",             # 외쪽 아래 행렬만 표시
+         type = "lower",             # 왼쪽 아래 행렬만 표시
          order = "hclust",           # 유사한 상관계수끼리 군집화
          addCoef.col = "black",      # 변수명 색깔
          tl.col ="black",            # 변수명 색깔

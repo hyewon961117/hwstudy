@@ -6,7 +6,7 @@ library(readxl)
 
 install.packages("multilinguer")
 library(multilinguer)
-install_jdk() # 자바 개발 도구 설치
+install_jdk(run='yes') # 자바 개발 도구 설치
 install.packages(c("stringr","hash","tau","Sejong","RSQLite","decvtools"), type="binary") # 한글 분석을 위한 패키지 설치
 install.packages("remotes") # 깃허브하고 연결하는 패키지 설치
 remotes::install_github("haven-jeon/KoNLP",upgrade="never",INSTALL_opts=c("--no-multiarch"))
