@@ -24,5 +24,5 @@ library(leaflet)
 leaflet() %>% addTiles() %>% addCircleMarkers(data=apt_price[1:1000,], label=~apt_nm)
 
 dir.create("06_geodataframe")
-save(apt_price, file="./06_geodataframe/06_apt_price.rdara")
+save(apt_price, file="./06_geodataframe/06_apt_price.rdata")
 write.csv(apt_price, "./06_geodataframe/06_apt_price.csv")

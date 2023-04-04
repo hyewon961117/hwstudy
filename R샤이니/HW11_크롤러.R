@@ -29,8 +29,7 @@ for (i in 1:nrow(loc)){ # 외부 반복 : 25개 자치구
   for (j in 1:length(datelist)){ # 내부 반복 : 12개월
     cnt <- cnt+1
     # URL 목록 채우기
-    url_list[cnt] <- paste0("http://openapi.molit.go.kr:8081/OpenAPI_ToolInstallPackage/s
-ervice/rest/RTMSOBJSvc/getRTMSDataSvcAptTrade?",
+    url_list[cnt] <- paste0("http://openapi.molit.go.kr:8081/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcAptTrade?",
     "LAWD_CD=",loc[i,1], # 지역 코드
     "&DEAL_YMD=", datelist[j], # 수집 월
     "&num0fRows=", 100, # 한 번에 가져올 최대 자료 수 

@@ -38,27 +38,6 @@ for (i in 1:nrow(apt_juso)){
   )
 }
 
-for(i in 1:nrow(apt_juso)){
-  tryCatch(
-   {
-    lon_lat <- GET(url = "https://dapi.kakao.com/v2/local/search/address.json",query=list(query=apt_juso[i,]),
-                                                                                         add_headers(Authorization=paste0("KakaoAk ",kakao_key)))
-                                                                                                                          #위도 경도만 추출해서 저장
-    coordxy <- lon_lat %>% content(as = 'text') %>% fromJSON()
-    cnt = cnt+1
-    #주소 경도 위도 정보를 리스트로 저장
-    add_list[[cnt]] <- data.table(apt_juso = apt_juso[i,],
-    coordx = coordxy$documents[[1]]$address[['x']],
-    coordy = coordxy$documents[[1]]$address[['y']])
-    msg <- paste0("[",i,"/",nrow(apt_juso),"] 번째 (",round(i/nrow(apt_juso)*100,2),"%) [", apt_juso[i,],"] 지오코딩중입니다.:X=",add_list[[cnt]]$coordx,"/ Y=",add_list[[cnt]]$coordy)
-    cat(msg,"\n\n")
-                                                          #예외처리
-                                                            
-  
-   },error=function(e){cat("ERROR:",conditionMessage(e),"\n")}
-  )
-}
-
 # 3단계 지오코딩 결과 저장
 juso_geocoding <- rbindlist(add_list)
 juso_geocoding$coord_x <- as.numeric(juso_geocoding$coord_x)
