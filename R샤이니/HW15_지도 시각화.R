@@ -217,6 +217,7 @@ grid <- st_read("data/seoul/seoul.shp")
 # 마커 클러스터링 옵션 설정
 
 # 이상치 설정 (평당 가격의 하위10%, 상위 90%)
+# 마커 클러링을 사용할 때 데이터가 왜곡되는 것을 방지
 pcnt_10 <- as.numeric(quantile(apt_price$py,probs=seq(.1,.9,by=.1))[1])
 pcnt_90 <- as.numeric(quantile(apt_price$py,probs=seq(.1,.9,by=.1))[9])
 
