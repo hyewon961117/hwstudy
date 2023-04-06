@@ -35,6 +35,7 @@ showtext_opts(dpi=112)
 ## 3단계 : 데이터 불러오기
 # 웹 서버에 배포할때는 setwd(dirname(...)) 코드 반드시 주석 처리해야함
 
+# setwd(dirname(rstudioapi::getSourceEditorContext()$path))
 grid <- st_read("./01_code/sigun_grid/seoul.shp")
 bnd <- st_read("./01_code/sigun_bnd/seoul.shp")
 load("./06_geodataframe/06_apt_price.rdata")
