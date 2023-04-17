@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자바스크립트_44</title>
+    <style>
+        #container{
+            width: 300px; margin: 10px auto;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="container">
+        <img src="images/easys-1.jpg" id="cover">
+    </div>
+    <script>
+        // // 이벤트 리스너 사용안하는 경우 onclick="함수" 적용해야함
+        // var cover = document.getElementById("cover");
+        // function changePic() {
+        //     cover.src = "images/easys-2.jpg";
+        // }
+        // function originPic() {
+        //     cover.src = "images/easys-1.jpg";
+        // }
+
+        // // 이벤트 리스너 사용안한 경우
+        // var cover = document.getElementById("cover");
+        // cover.addEventListener("mouseover", changePic, false)
+        // cover.addEventListener("mouseout", originPic, false)
+        // function changePic() {
+        //     cover.src = "images/easys-2.jpg";
+        // }
+        // function originPic() {
+        //     cover.src = "images/easys-1.jpg";
+        // }
+
+        // 이벤트 리스너 사용하고 익명함수 사용하는 경우
+        var cover = document.getElementById("cover");
+        cover.addEventListener("mouseover", function changePic() {
+            cover.src = "images/easys-2.jpg";
+        });
+
+        cover.addEventListener("mouseout", function originPic() {
+            cover.src = "images/easys-1.jpg";
+        })
+        
+
+    </script>
+</body>
+</html>

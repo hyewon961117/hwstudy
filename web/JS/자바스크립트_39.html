@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자바스크립트_8</title>
+    <script>
+        function handler(){
+            // 첫번째 h1 태그의 배경 yellow
+            document.querySelector('h1').style.backgroundColor='yellow'
+            // 모든 h1 태그의 글자색을 blue로
+            let h1Array = document.querySelectorAll('h1');
+            for (let h1 of h1Array){
+                h1.style.color = "blue";
+            }
+            // class가 header1인 요소를 배경을 오렌지색으로 바꾸기
+            let header1Array = document.querySelectorAll('.header1');
+            for (let h1 of header1Array){
+                h1.style.backgroundColor = 'orange';
+            }
+            // id가 header1인 요소의 텍스트를 From Javascript로 바꾸기
+            document.querySelector('#header1').innerHTML = "From Javascript";
+
+        }
+    </script>
+</head>
+<body style="margin: 40px;">
+    <h1>Header 1</h1>
+    <h1 class="header1">Header 1</h1>
+    <h1 id="header1">Header 1</h1>
+    <h1 class="header1">Header 1</h1>
+    <button onclick="handler()">Go!!!!</button>
+    <script>
+
+    </script> 
+</body>
+</html>

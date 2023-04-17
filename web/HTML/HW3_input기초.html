@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HW2_input기초</title>
+</head>
+<body>
+    <form>
+        <fieldset>
+            <label>아이디: <input type="text" id="user_id" size="10" value="email"></label>
+            <label>비밀번호: <input type="password" id="user_pw" size="10"></label>
+            <input type="submit" value="로그인">
+        </fieldset>
+    </form>
+
+    <form action="">
+        <label for="user_id">아이디(6자이상)</label>
+        <input type="text" id="user_id">
+    </form>
+
+    <form action="">
+        <h1>날짜 지정하기</h1>
+        <input type="date">
+        <input type="month">
+        <input type="week">
+        <hr>
+        <h1>시간 지정하기</h1>
+        <input type="time">
+        <input type="datetime-local">
+        <hr>
+        <h1>범위 지정하기</h1>
+        <input type="date" min="2020-02-01" max="2020-02-05">
+        <input type="time" min="08:00" max="10:00">
+    </form>
+</body>
+</html>

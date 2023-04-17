@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자바스크립트_25</title>
+</head>
+<body>
+    <script>
+        // 타이머 함수 : setTimeout(함수, 시간), setInterval(함수, 시간)
+        // 종료 : clearTimeout(타이머_ID), clearInterval(타이머_ID)
+        // 1000은 1초를 뜻함
+
+        // setTimeout(()=>{
+        //     console.log(`1초 후에 실행됩니다.`);
+        // }, 1000)
+
+        // let count=0;
+        // setInterval(()=>{
+        //     console.log(`1초 마다 실행됩니다.${count}번째`);
+        //     count++
+        // }, 1000)
+
+        // 5초 후에 종료하도록 수정
+        let id;
+        let count = 0;
+        id = setInterval(()=>{
+            console.log(`1초마다 실행됩니다. ${count}번째`);
+            count++;
+        }, 1000)
+        
+        setTimeout(()=>{
+            console.log(`타이머를 종료합니다.`)
+            clearInterval(id)
+        },5000)
+
+    </script> 
+</body>
+</html>

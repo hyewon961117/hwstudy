@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css_15</title>
+    <style>
+        .style{
+            width: 200px;
+            height: 100px;
+            text-align: center;
+            font-size: 20px;
+            border-width: 5px; /* 테두리의 굵기 */
+            line-height: 100px;
+            margin: 15px;
+            display: inline-block;
+        }
+        .solid{
+            width: 200px;
+            height: 100px;
+            text-align: center;
+            font-size: 20px;
+            margin: 15px;
+            display: inline-block;
+            border-style: solid;
+        }
+        .dashed{
+            width: 200px;
+            height: 100px;
+            text-align: center;
+            font-size: 20px;
+            margin: 15px;
+            display: inline-block;
+            border-style: dashed;
+        }
+        #box1{border-style: solid;}
+        #box2{border-style: dotted;}
+        #box3{border-style: dashed;}
+
+        #box4{border-width: 2px;}
+        #box5{border-width: thick thin;} /* top&bottom - thick / left&right - thin*/
+        #box6{border-width: thick thin thin;} /* top right,left bottom*/
+        #box7{border-width: 10px 5px 5px 10px;}
+        
+        #box8{border-color: red;}
+        #box9{border-color: blue black black red;}
+
+    </style>
+</head>
+<body>
+    <div class="style" id="box1">실선 테두리</div>
+    <div class="style" id="box2">점선 테두리</div>
+    <div class="style" id="box3">긴점선 테두리</div>
+    <hr>
+    <div class="solid" id="box4">박스1</div>
+    <div class="solid" id="box5">박스2</div>
+    <div class="solid" id="box6">박스3</div>
+    <div class="solid" id="box7">박스4</div>
+    <hr>
+    <div class="dashed" id="box8">박스5</div>
+    <div class="dashed" id="box9">박스6</div>
+</body>
+</html>

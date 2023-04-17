@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자바스크립트_37</title>
+    <!-- <script>
+        document.querySelector('h1').style.backgroundColor='yellow';
+        document.querySelector('h2').style.backgroundColor='red';
+    </script> -->
+    <script>
+        // 2번째 방법
+        function handler(){
+            document.querySelector('h1').style.backgroundColor='yellow';
+            document.querySelector('h2').style.backgroundColor='red';}
+    </script>
+</head>
+<body onload="handler()">
+    <h1>header 1</h1>
+    <h2>header 2</h2>
+    <script>
+        // 1번째 방법
+        document.querySelector('h1').style.backgroundColor='yellow';
+        document.querySelector('h2').style.backgroundColor='red';
+    </script>
+</body>
+</html>

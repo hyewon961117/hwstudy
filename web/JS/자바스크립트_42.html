@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자바스크립트_42</title>
+    <script>
+        window.onload = function() {
+            const image = document.querySelector("#image");
+            image.src="http://picsum.photos/640/360";
+            image.setAttribute('width', 700);
+            image.height = parseInt(700*360/640);
+
+            const width = image.getAttribute('width');
+            const height = image.height;
+            const info = `width ${width}, height: ${height}`;
+            document.querySelector('h3').innerHTML = info;
+        }
+    </script>
+</head>
+<body>
+    <!-- 문서객체.getAttribute(속성이름) : 특정속성 추출
+    문서객체.setAttribute(속성이름, 값) : 특정속성값을 지정 -->
+    <!-- http://placekitten.com/너비/높이
+    http://picsum.photos/640/360 -->
+    <img id="image">
+    <h3></h3>
+</body>
+</html>

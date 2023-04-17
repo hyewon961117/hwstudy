@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css_19</title>
+    <style>
+        * {margin: 0; padding: 0;}
+        p{
+            width: 500px;
+            height: 200px;
+            background-color: #eee;
+            border: 1px solid #ccc;
+            line-height: 2;
+        }
+        #static{position: static;}
+        #relative-1{position: relative;}
+        #relative-2{position: relative; left: 100px; top: -50px;}
+        #fixed {width: 100px; height: 100px; background-color: black;
+        position: fixed; right: 30px; top: 30px}
+ 
+    </style>
+
+<body>
+    <p id="static">1. Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+    <p id="relative-1">2. Asperiores debitis et voluptatem officiis laudantium. </p>
+    <p id="relative-2">3. Ad possimus numquam sunt dolorem dolore, cumque aliquid suscipit, repellat fugiat nostrum quas ipsam exercitationem.</p>
+    <p id="fixed"></p>
+</body>
+</html>

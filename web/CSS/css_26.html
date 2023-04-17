@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css_26</title>
+    <style>
+        ul{list-style: none;}
+        li{
+            width: 120px;
+            display: inline-block;
+            margin: 10px;}
+        li a{
+            padding: 5px 20px;
+            font-size: 14px;
+            text-decoration: none;
+            font-weight: bold;}
+        a[href]{background: yellow; border: 1px solid #ccc; font-weight:normal}
+        li a[href="#"]{cursor: default}
+    </style>
+<body>
+    <ul>
+        <li><a>메인 메뉴:</a></li>
+        <li><a href="#">메뉴1:</a></li>
+        <li><a href="https://www.naver.com/">메뉴2:</a></li>
+        <li><a href="https://www.daum.net/">메뉴3:</a></li>
+        <li><a href="https://google.com">메뉴4:</a></li>
+    </ul>
+</body>
+</html>

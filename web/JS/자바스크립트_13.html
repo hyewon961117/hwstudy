@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자바스크립트_13</title>
+    <style>
+        body{font-size: 1.2em; text-align: center;}
+        p{color: red; font-weight: bold;}
+    </style>
+</head>
+<body>
+    <h2>3의 배수 찾기</h2>
+    <script>
+        // 3의 배수 찾기
+        var i;
+        var count = 0;
+        var num = prompt("몇까지 3의 배수를 찾을까요?","100");
+        for(i=1; i<num; i++){
+            if(i%3==0){
+                count++; //count += 1;
+                document.write(i+",");}
+        }
+        // document.write(`<p>3의 배수는 ${count}개</p>`);
+        document.write("<p>"+num+"까지의 3의 배수 개수는 "+count+"개 입니다.</p>")
+    </script> 
+</body>
+</html>

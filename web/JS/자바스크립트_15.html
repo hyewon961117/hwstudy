@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자바스크립트_15</title>
+</head>
+<body>
+    <script>
+        // for (let i = 0; true; i++){
+        //     alert(i+"번째 반복문입니다.")
+
+        //     const isContinue = confirm("계속하시겠습니까?")
+        //     if(!isContinue) {
+        //         break
+        //     }
+        // }
+
+        // for (let i = 0; i < 5; i++){
+        //     continue
+        //     alert(i)
+        // }
+
+        // let output=0;
+        // for (let i = 1; i<=10; i++){
+        //     if(i%2==1){
+        //         continue
+        //     }
+        //     output += i
+        // }
+        // alert(output)
+
+        // let output ='';
+        // for(let i=1; i<=10; i++){
+        //     for(let j=1; j<i; j++){
+        //         output += "*"
+        //     }
+        //     output += "\n"
+        // }
+        // console.log(output)
+
+        // let output ='';
+        // for(let i=10; i>=1; i--){
+        //     for(let j=1; j<i; j++){
+        //         output += "*"
+        //     }
+        //     output += "\n"
+        // }
+        // console.log(output)
+
+        let output ='';
+        for(let i=1; i<=15; i++){
+            for(let j=15; j>i; j--){
+                output += " "
+            }
+            for (let k=0; k<2*i-1; k++){
+                output += "*"
+            }
+            output += '\n'
+        }
+        console.log(output)
+    </script> 
+</body>
+</html>

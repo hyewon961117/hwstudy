@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css_10</title>
+    <style>
+        .book1{
+            list-style-type: none;
+        }
+        .book2{
+            list-style-type: upper-latin;
+        }
+        ul{
+            list-style-image: url(images/dot.png);
+        }
+        .inside{list-style-position: inside;}
+        .comlist{
+            list-style-image: none;
+            list-style-type: none;
+        }
+        a{
+            text-decoration: none;
+            color: black;
+        }
+        .comlist>li{
+            display: inline-block;
+            /* 인라인 레벨 요소로 만들어줌 - 가로로 배치 */
+            margin: 10px 15px;
+            padding: 10px;
+        }
+    </style>
+
+</head>
+<body>
+    <h1>더조은신촌</h1>
+    <ul class="comlist">
+        <li><a href="#">회사소개</a></li>
+        <li><a href="#">자료실</a></li>
+        <li><a href="#">질문답변</a></li>
+        <li><a href="#">동영상강의</a></li>
+        <li><a href="#">커리큘럼</a></li>
+    </ul>
+
+    <h1>도서 시리즈</h1>
+    <ul class="book1">
+        <li>Do it! 시리즈</li>
+        <li>첫 코딩 시리즈</li>
+        <li>된다 시리즈</li>
+    </ul>
+    <ul class="inside">
+        <li>Do it! 시리즈</li>
+        <li>첫 코딩 시리즈</li>
+        <li>된다 시리즈</li>
+    </ul>
+    <ol class="book2">
+        <li>Do it! 시리즈</li>
+        <li>첫 코딩 시리즈</li>
+        <li>된다 시리즈</li>
+    </ol>
+</body>
+</html>

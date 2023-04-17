@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자바스크립트_19</title>
+    <style>
+        td{text-align: center;}
+        body{margin: 50px;}
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>중간고사:</td>
+            <td><input type="text" id="mid" placeholder="100점만점으로 입력"></td>
+        </tr>
+        <tr>
+            <td>기말고사:</td>
+            <td><input type="text" id="final" placeholder="100점만점으로 입력"></td>
+        </tr>
+        <tr>
+            <td>과제:</td>
+            <td><input type="text" id="report" placeholder="100점만점으로 입력"></td>
+        </tr>
+        <tr>
+            <td colspan="2"> <button onclick="score()">학점 계산</button></td>
+        </tr>
+        <tr>
+            <td>가중평균:</td>
+            <td id="average"></td>
+        </tr>
+        <tr>
+            <td>학점:</td>
+            <td id="grade"></td>
+        </tr>
+    </table>
+
+    <script>
+        function score(){
+            const mid = Number(document.getElementById('mid').value);
+            const final = Number(document.getElementById('final').value);
+            const report = Number(document.getElementById('report').value);
+            const average = mid * 0.3 + final * 0.5 + report * 0.2;
+            const avgTag = document.getElementById('average');
+            avgTag.innerHTML=average;
+
+            let grade;
+            switch(parseInt(average/10)){
+                case 10:
+                case 9:
+                    grade='A';
+                    break;
+                case 8:
+                    grade='B';
+                    break;
+                case 7:
+                    grade='C';
+                    break;
+                case 6:
+                    grade='D';
+                    break;
+                default:
+                    grade='F';    
+            }
+            const gradeTag=document.getElementById('grade');
+            gradeTag.innerHTML = grade;
+        }
+    </script> 
+</body>
+</html>

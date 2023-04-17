@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자바스크립트_21</title>
+</head>
+<body>
+    <script>
+        // let array = [1,2,3];
+        // console.log(array);
+        // array[array.length]=100; //3번째 자리 값을 100으로 바꿈
+        // console.log(array);
+
+        // array.push('fantastic'); //"fantastic" 값 새로운 인덱스에 추가
+        // console.log(array);
+
+        // array[10] = 0;
+        // console.log(array);
+
+        // 공약수
+        const a=12, b=24;
+        let commonDivisiors = [];
+        for (let i=1; i<= (a<b ? a:b); i++){
+            if (a%i ==0 && b%i == 0){
+                commonDivisiors.push(i);
+            }
+        }
+        console.log(commonDivisiors)
+    </script> 
+</body>
+</html>

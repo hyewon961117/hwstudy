@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자바스크립트_30</title>
+</head>
+<body>
+    <script>
+        const product ={
+            제품명 : '망고',
+            유형 : '절임',
+            성분 : '망고, 설탕, 나트륨, 황색소',
+            원산지: '필리핀'
+        }
+        // 객체의 경우 인덱스가 아닌 점 키 로 값 가져올 수 있음
+        console.log(product.제품명)
+        console.log(product.유형)
+        console.log(product.성분)
+        console.log(product.원산지)
+        
+        // 함수도 가능
+        // const object = {number:27, string:'구름', boolean:true, array:[0,1,2,3,4], method:function(){}}
+        // console.log(object.method) // 현재 기능 X
+        
+        // 메소드 내에서 자기 자신의 키 값을 사용하려면 this를 넣어줘야함
+        const object = {number:27, string:'구름', boolean:true, array:[0,1,2,3,4], method:function(food){alert(this.string+'은 '+food+'를 먹습니다.')}}
+        console.log(object.method('사료'))
+
+    </script> 
+</body>
+</html>

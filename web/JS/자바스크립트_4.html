@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자바스크립트_4</title>
+</head>
+<body>
+    <!-- about:blank 검색해서 콘솔창에서 alert창 실행해보기 -->
+    <!-- ctrl+shift+j 혹은 F12 console 클릭-->
+    <script>
+        "안녕하세요"
+        "this is 'string'"
+        "this is \"string\""
+        "this is \\\"string\""
+        "this is \n string"
+        "안녕"+"하세요"
+        "안녕 하세요".length
+        52 > 230
+        52 < "230"
+        3 != 3
+        3 !== '3'
+        10 + '10'
+        typeof("230");
+        parseInt("230");
+        console.log("this is \n string");
+        var x = 3; /*변수선언*/
+        x
+        let y = 4; /*let으로 선언된 변수는 해당 블록 내에서만 사용가능*/
+        const hello ="안녕하세요"; /*일정한 상수 값을 유지. 업데이트도, 재선언도 불가능*/
+        console.log(typeof(1), typeof(3.14)); /* 둘다 number로 나옴 */
+        console.log(2**10);
+        console.log(typeof("hello"));
+        console.log(hello[0], hello[4]); /* 인덱싱 가능 */
+        console.log(`${hello} 3+4=${x+y}`);
+        console.log(`올해는 ${new Date().getFullYear()}년 입니다.`); /*올해 날짜 찍기*/
+        console.log(typeof(true)) /* R - TRUE / python - True / JS - true */
+        console.log(true<10); /* 비교 연산자 사용 가능 true 값은 1로 인식 */
+        console.log(typeof function() {});
+        console.log(typeof(()=>{})); /* 람다함수 */
+        let obj={x, y};
+        obj
+        console.log(typeof(obj));
+        console.log(obj.x, obj.y);
+        let alpha;
+        console.log(typeof(alpha)); /*undefined도 타입의 형태 중 하나*/
+        console.log(x++); /* 증감연산자 (원래값 출력 후 다음부터 적용) */
+        console.log(x); /* 증감연산자 선언 후 변수에 +1된 값으로 바뀜 */
+        console.log(++x); /* 증감연산자 (바로 적용) */
+        console.log(--x); /* -1 빼기도 가능 */
+        console.log(Number('101'));
+        console.log('101');
+        console.log(Number('101'), String(101), Number=(false));
+        console.log(Boolean(1), Boolean(undefined),Boolean(''),Boolean('null'),Boolean(NaN));
+        console.log(Boolean(0.1),Boolean(' '),Boolean(100)); /*값이 있으면 true 반환*/
+        console.log(Number('string'));
+        console.log(Number('0o123'));
+        console.log(Number('0o123'),Number('0x123')); /*83 291*/
+        console.log(52+'37'); /*5237*/
+        console.log(52+21+'37'); /*7337*/
+        console.log(1+true, true+'bool'); /*2 'truebool'*/
+        console.log(true+1+'bool'); /*2bool*/
+        console.log(52-'37','37'-21.5,'37'*3); /* 15 15.5 111 */
+        console.log(1==1.0,  1===1.0); /* true true */
+        console.log(1=='1', 1==='1', 1==true, 1===true); /* true false true false */
+        true && false; /* false */
+        true || false; /* true */
+        !true; /* false */
+        typeof '문자'; /* 'string' */
+        typeof 234; /* 'number' */
+        typeof 10 ==='number'; /* true */
+        let list = '';
+        list += '<ul>';
+        list += '<li>hello</li>';
+        list += '<li>javascript</li>';
+        list += '</ul>';
+        document.write(list);
+        let number=10;
+        alert(number++);
+        alert(number--);
+        const input="안녕하세요";
+        alert(input);
+        const input2 = prompt(); alert(input2);
+        const input3 = confirm('진행하시겠습니까?'); alert(input3);
+    </script> 
+</body>
+</html>

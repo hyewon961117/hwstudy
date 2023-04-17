@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css_23</title>
+    <style>
+        .grad{width: 500px; height: 300px; border-radius: 10px; margin: 20px}
+        #grad1{background-color: blue; 
+            background: linear-gradient(to right bottom, blue, white);}
+        #grad2{background-color: red; 
+            background: linear-gradient(45deg, red, white);}
+        #grad3{background-color: blue; 
+            background: linear-gradient(to bottom, blue, white 30%, blue);}
+        #grad4{background-color: red; 
+            background: repeating-linear-gradient(yellow, yellow 20px, red 20px, red 40px);}
+        #grad5{background-color: gray; 
+            background: repeating-radial-gradient(circle,white, white 10%, gray 10%, gray 20%);}
+        
+        .circle{width: 300px; height: 300px; border-radius: 50%; margin: 20px}
+        #circle1{background: blue; 
+            background: radial-gradient(circle at 20% 20%, white, blue);
+            border-radius: 50%;}
+    </style>
+<body>
+    <div class="grad" id="grad1"></div>
+    <div class="grad" id="grad2"></div>
+    <div class="grad" id="grad3"></div>
+    <div class="grad" id="grad4"></div>
+    <div class="grad" id="grad5"></div>
+    <div class="circle" id="circle1"></div>
+</body>
+</html>
