@@ -79,7 +79,7 @@ CREATE TABLE member(
 	mem_id CHAR(8) not null,
     mem_name VARCHAR(10) not null,
     height TINYINT unsigned,
-    CONSTRAINT primary kmemberey PK_member_mem_id (mem_id)); -- 기본키에 별도의 이름 설정
+    CONSTRAINT primary key PK_member_mem_id (mem_id)); -- 기본키에 별도의 이름 설정
 DESCRIBE member;
 
 # 외래키

@@ -153,7 +153,7 @@ SELECT mem_id, mem_name, addr FROM member
 	WHERE mem_name = '에이핑크'; -- 인덱스를 사용하여 조회
 
 CREATE INDEX idx_member_mem_number ON member (mem_number);
-analyze table member; -- 금까지 생성한 인덱스를 실제로 적용
+analyze table member; -- 지금까지 생성한 인덱스를 실제로 적용
 
 SELECT mem_id, mem_name, addr FROM member
 	WHERE mem_number >= 7; -- 인덱스를 사용하여 조회
@@ -162,10 +162,29 @@ SELECT mem_id, mem_name, addr FROM member
 	WHERE mem_number >= 1; -- full scan : 값이 너무 많으면 인덱스로 조회하지않음
 
 SELECT mem_id, mem_name, addr FROM member
-	WHERE mem_number*2 >= 14; -- 
+	WHERE mem_number*2 >= 14; -- WHERE문에 연산이 가해지면 인덱스를 사용하지 않음
 
 SELECT mem_id, mem_name, addr FROM member
-	WHERE mem_number >= 14/2; -- 
+	WHERE mem_number >= 14/2; -- 위와 같은 코드지만 인덱스를 사용하여 검색함
 
+# 인덱스 제거
+-- 먼저 인덱스 이름 확인
+SHOW INDEX FROM member;
+-- 클러스터형 인덱스와 보조 인덱스가 섞여 있을 때는 보조 인덱스를 먼저 제거하는것이 좋음
+DROP INDEX idx_member_mem_name ON member;
+DROP INDEX idx_member_addr ON member;
+DROP INDEX idx_member_mem_number ON member;
 
-
+ALTER TABLE member
+	DROP primary key; -- 오류 / buy 테이블과 외래키 관계 때문에 삭제할 수 없음
+    
+-- 외래키 이름 확인
+SELECT table_name, constraint_name
+	FROM information_schema.referential_constraints
+    WHERE constraint_schma = 'market_db';
+    
+-- 외래키를 제거하고 기본키를 제거
+ALTER TABLE buy
+	DROP FOREIGN KEY buy_ibfk_1;
+ALTER TABLE member
+	DROP Primary key;

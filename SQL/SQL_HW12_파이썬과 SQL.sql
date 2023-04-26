@@ -1,0 +1,2 @@
+CREATE DATABASE soloDB;
+# 종료
