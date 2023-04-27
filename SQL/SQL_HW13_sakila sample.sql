@@ -110,6 +110,77 @@ SELECT rating '등급', count(*) '영화수' FROM film
 	WHERE rental_rate>1.0 and rental_rate < 6.0
 	GROUP BY rating;
 
+# 1. 등급별 영화 수 합계, 평균, 최대, 최소 / 그룹 rating, rental_rate / 평균렌탈비용 내림차순
+SELECT * FROM film;
+SELECT rating, count(*), sum(rental_rate), avg(rental_rate), max(rental_rate), min(rental_rate)  FROM film
+	GROUP BY rating, rental_rate
+    ORDER BY avg(rental_rate) DESC;
+
+# 2. 등급별 영화 개수, 등급, 평균 렌탈 rate를 조회하고 평균렌탈 rate를 내림차순으로 조회
+SELECT count(*) '영화 개수', rating '등급', avg(rental_rate) '평균 렌탈' FROM film
+	GROUP BY rating
+    ORDER BY avg(rental_rate) DESC;
+
+# 3. 분류가 family인 film테이블에서 서브쿼리를 이용해 조회
+# film, film_category, category 테이블 활용
+SELECT * FROM film;
+SELECT * FROM film_category;
+SELECT * FROM category;
+
+SELECT film_id, title, release_year FROM film
+	WHERE film_id in (SELECT film_id FROM film_category
+		WHERE category_id = (SELECT category_id FROM category WHERE name = "Family"));
+
+
+# 4. action 영화 이름, 영화수, 합계(rental_rate), 평균, 최소, 최대 집계
+# film, film_category, category 테이블 활용
+SELECT C.name, count(F.film_id) 영화수, sum(F.rental_rate) 합계, avg(F.rental_rate) 평균, 
+		max(F.rental_rate) 최대, min(F.rental_rate) 최소 FROM film F, film_category FC
+    join category C on FC.category_id = C.category_id
+    WHERE FC.film_id = F.film_id
+    GROUP BY C.name, F.rental_rate
+    HAVING C.name = 'action'
+    ORDER BY 평균 DESC;
+    
+# 5. 가장 대여비가 높은 영화 분류 조회 2개(name, sum(ifnull, 0으로)을 사용 payment 테이블에서 amount 합계 
+# name은 category_name으로 합계는 revenue로 별칭)
+# category film_category inventory payment rental 테이블 조인후 name으로 그룹분석 후 revenue로 내림차순
+SELECT * FROM category;
+SELECT * FROM film_category;
+SELECT * FROM film;
+SELECT * FROM inventory;
+SELECT * FROM payment;
+SELECT * FROM rental;
+
+SELECT C.name 'category_name', sum(ifnull(P.amount, 0)) 'revenue' FROM category C
+	LEFT JOIN film_category FC ON C.category_id = FC.category_id
+    LEFT JOIN film F ON FC.film_id = F.film_id
+    LEFT JOIN inventory I ON F.film_id = I.film_id
+    LEFT JOIN rental R ON I.inventory_id = R.inventory_id
+    LEFT JOIN payment P ON R.rental_id = P.rental_id
+    GROUP BY C.name
+    ORDER BY revenue DESC;
+
+# 6. 위 쿼리문 결과를 뷰로 생성
+# v_cat_revenue로 하고 뷰를 조회하기
+CREATE VIEW v_cat_revenue AS 
+	SELECT C.name 'category_name', sum(ifnull(P.amount, 0)) 'revenue' FROM category C
+		LEFT JOIN film_category FC ON C.category_id = FC.category_id
+		LEFT JOIN film F ON FC.film_id = F.film_id
+		LEFT JOIN inventory I ON F.film_id = I.film_id
+		LEFT JOIN rental R ON I.inventory_id = R.inventory_id
+		LEFT JOIN payment P ON R.rental_id = P.rental_id
+		GROUP BY C.name
+		ORDER BY revenue DESC;
+SELECT * FROM v_cat_revenue limit 10;
+
+
+
+
+
+
+
+
 
 
 
